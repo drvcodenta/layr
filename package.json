@@ -1,0 +1,38 @@
+{
+  "name": "layr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/cli.ts",
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "chalk": "^5.6.0",
+    "dotenv": "^17.2.2",
+    "fs-extra": "^11.3.1",
+    "inquirer": "^12.9.4",
+    "keytar": "^7.9.0",
+    "openai": "^5.19.1",
+    "ora": "^8.2.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.3.1",
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "vitest": "^3.2.4"
+  }
+}
