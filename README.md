@@ -1,17 +1,17 @@
 # layr
 
-🚀 **Simplified planning layer for coding agents**
+**Simplified planning layer for coding agents**
 
 Layr is an AI-powered project planning tool that breaks down development goals into actionable steps, generates code, and helps manage project execution. It uses OpenAI's GPT models to create intelligent development plans with fallback to heuristic planning when no API key is available.
 
 ## Features
 
-- 🤖 **AI-Powered Planning**: Generate detailed project plans using OpenAI GPT
-- 📝 **Code Generation**: Create code snippets for each plan step
-- 🎨 **Beautiful CLI**: Colorful output with spinners and progress indicators
-- 💾 **Export Plans**: Save plans as JSON or Markdown
-- 🔄 **Fallback Mode**: Works without API key using heuristic planning
-- 🧪 **Template System**: Pre-built templates for common patterns
+- **AI-Powered Planning**: Generate detailed project plans using OpenAI GPT
+- **Code Generation**: Create code snippets for each plan step
+- **Beautiful CLI**: Colorful output with spinners and progress indicators
+- **Export Plans**: Save plans as JSON or Markdown
+- **Fallback Mode**: Works without API key using heuristic planning
+- **Template System**: Pre-built templates for common patterns
 
 ## Installation
 
@@ -64,13 +64,13 @@ npm run dev export myplan.md
 ### Example Session
 
 ```
-🚀 Layr - AI-Powered Project Planner
+Layr - AI-Powered Project Planner
 
 $ npm run dev plan "Build a REST API with user authentication"
 
-✔ Generating AI-powered plan...
+Generating AI-powered plan...
 
-📋 REST API with User Authentication
+REST API with User Authentication
 Goal: Build a REST API with user authentication
 
 Steps:
@@ -99,7 +99,7 @@ Steps:
 
 $ npm run dev run 1 --apply
 
-✅ Code generated and written to server.ts
+Code generated and written to server.ts
 ```
 
 ### Fallback Mode
@@ -107,11 +107,11 @@ $ npm run dev run 1 --apply
 When no API key is configured, Layr automatically switches to fallback mode:
 
 ```
-⚠️  Warning: Running in fallback mode
+Warning: Running in fallback mode
    No valid API key found. Using heuristic plans.
    Run "layr set-key" to configure OpenAI API.
 
-📋 Plan for: Build a REST API
+Plan for: Build a REST API
 Goal: Build a REST API
 
 Steps:
@@ -229,10 +229,6 @@ Access templates in code generation or reference in plans.
 4. Ensure all tests pass
 5. Submit a pull request
 
-## License
-
-MIT
-
 ---
 
-*Built with TypeScript, Commander.js, OpenAI API, and ❤️*
+*Built with TypeScript, Commander.js, and OpenAI API*

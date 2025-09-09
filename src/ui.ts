@@ -2,17 +2,17 @@ const chalk = require('chalk');
 import { Plan, PlanStep } from './types';
 
 export function printBanner() {
-	console.log(chalk.cyan.bold('\n🚀 Layr - AI-Powered Project Planner\n'));
+	console.log(chalk.cyan.bold('\nLayr - AI-Powered Project Planner\n'));
 }
 
 export function printFallbackWarning() {
-	console.log(chalk.yellow.bold('⚠️  Warning: Running in fallback mode'));
+	console.log(chalk.yellow.bold('Warning: Running in fallback mode'));
 	console.log(chalk.yellow('   No valid API key found. Using heuristic plans.'));
 	console.log(chalk.yellow('   Run "layr set-key" to configure OpenAI API.\n'));
 }
 
 export function printPlan(plan: Plan) {
-	console.log(chalk.cyan.bold(`\n📋 ${plan.title}`));
+	console.log(chalk.cyan.bold(`\n${plan.title}`));
 	console.log(chalk.gray(`Goal: ${plan.goal}\n`));
 	
 	console.log(chalk.bold('Steps:'));
@@ -59,17 +59,17 @@ export async function createSpinner(text: string) {
 }
 
 export function printSuccess(message: string) {
-	console.log(chalk.green(`✅ ${message}`));
+	console.log(chalk.green(`${message}`));
 }
 
 export function printError(message: string) {
-	console.log(chalk.red(`❌ ${message}`));
+	console.log(chalk.red(`${message}`));
 }
 
 export function printInfo(message: string) {
-	console.log(chalk.blue(`ℹ️  ${message}`));
+	console.log(chalk.blue(`${message}`));
 }
 
 export function printWarning(message: string) {
-	console.log(chalk.yellow(`⚠️  ${message}`));
+	console.log(chalk.yellow(`${message}`));
 }
