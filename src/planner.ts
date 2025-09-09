@@ -1,6 +1,7 @@
 import { Plan } from './types';
 import { LLMClient, MockProvider } from './llmClient';
 import { readKey } from './config';
+import { createSpinner, printWarning } from './ui';
 
 const PLAN_PROMPT = (goal: string) => [
 	{
@@ -58,16 +59,22 @@ export async function generatePlan(goal: string): Promise<Plan> {
 	const llm = apiKey ? new LLMClient() : new MockProvider();
 	let raw: string;
 	if (apiKey) {
-		raw = await llm.chat(PLAN_PROMPT(goal));
+		const spinner = await createSpinner('Generating AI-powered plan...');
+		spinner.start();
 		try {
+			raw = await llm.chat(PLAN_PROMPT(goal));
 			const plan = llm.parseJsonResponse<Plan>(raw);
 			if (!hasUniqueIds(plan.steps)) throw new Error('Step IDs must be unique');
 			if (hasCycles(plan.steps)) throw new Error('Plan has cyclic dependencies');
+			spinner.succeed('Plan generated successfully!');
 			return plan;
 		} catch (e) {
-			throw new Error('Invalid plan format: ' + (e as Error).message);
+			spinner.fail('AI plan generation failed');
+			printWarning(`Using fallback plan: ${(e as Error).message}`);
+			return fallbackHeuristicPlan(goal);
 		}
 	} else {
+		printWarning('No API key found - using fallback mode');
 		return fallbackHeuristicPlan(goal);
 	}
 }

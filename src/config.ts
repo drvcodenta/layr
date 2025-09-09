@@ -27,7 +27,7 @@ export async function readKey(): Promise<string | undefined> {
 }
 
 export async function setKeyInteractive(): Promise<void> {
-	const inquirer = await import('inquirer');
+	const inquirer = require('inquirer');
 	const { apiKey } = await inquirer.default.prompt([
 		{
 			type: 'input',

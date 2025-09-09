@@ -18,8 +18,8 @@ export class LLMClient {
 	async chat(messages: Message[]): Promise<string> {
 		if (!this.openai) await this.init();
 		let attempt = 0;
-		const maxAttempts = 5;
-		let delay = 1000;
+		const maxAttempts = 3;
+		let delay = 5000; // Start with 5 seconds
 		while (attempt < maxAttempts) {
 			try {
 				const res = await this.openai!.chat.completions.create({
@@ -29,6 +29,7 @@ export class LLMClient {
 				return res.choices[0].message.content || '';
 			} catch (err: any) {
 				if (err.status === 429) {
+					console.log(`Rate limited, waiting ${delay/1000}s before retry ${attempt + 1}/${maxAttempts}...`);
 					await new Promise(r => setTimeout(r, delay));
 					delay *= 2;
 					attempt++;
@@ -39,7 +40,7 @@ export class LLMClient {
 				}
 			}
 		}
-		throw new Error('Too many requests, please try again later.');
+		throw new Error('Rate limit exceeded. Please wait a few minutes and try again.');
 	}
 
 	parseJsonResponse<T>(raw: string): T {
