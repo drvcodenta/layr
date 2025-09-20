@@ -9,6 +9,7 @@ git clone https://github.com/drvcodenta/layr.git
 cd layr
 npm install
 npm run build
+```
 
 ## Commands
 
